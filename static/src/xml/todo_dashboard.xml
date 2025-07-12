@@ -1,92 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates>
-    <t t-name="todo_dashboard.Dashboard" owl="1">
-        <div class="todo-filters mb-3 p-3 bg-light rounded shadow-sm">
-            <form class="row g-2 align-items-end" t-on-submit.prevent="onFilter">
-                <div class="col-md-3">
-                    <label class="form-label fw-bold small">Start Date</label>
-                    <input type="date" class="form-control form-control-sm" t-ref="startDate"/>
-                </div>
-                <div class="col-md-3">
-                    <label class="form-label fw-bold small">End Date</label>
-                    <input type="date" class="form-control form-control-sm" t-ref="endDate"/>
-                </div>
-                <div class="col-md-2">
-                    <label class="form-label fw-bold small">Priority</label>
-                    <select class="form-select form-select-sm" t-ref="priority">
-                        <option value="">All</option>
-                        <option value="0">Low</option>
-                        <option value="1">Normal</option>
-                        <option value="2">High</option>
-                    </select>
-                </div>
-                <div class="col-md-2">
-                    <label class="form-label fw-bold small">Status</label>
-                    <select class="form-select form-select-sm" t-ref="completed">
-                        <option value="">All</option>
-                        <option value="true">Completed</option>
-                        <option value="false">Not Completed</option>
-                    </select>
-                </div>
-                <div class="col-md-2 text-end">
-                    <button type="submit" class="btn btn-primary btn-sm w-100">Filter</button>
-                </div>
-            </form>
-        </div>
+<t t-name="todo_dashboard.Dashboard" owl="1">
 
-        <div class="o_todo_dashboard" style="max-height: 95vh; overflow-y: auto;">
-            <h2>Todo Tasks Dashboard</h2>
+    <div class="todo-filters mb-3 p-3 bg-light rounded shadow-sm">
+        <form class="row g-2 align-items-end" t-on-submit.prevent="onFilter">
+            <div class="col-md-3">
+                <label class="form-label fw-bold small">Start Date</label>
+                <input type="date" class="form-control form-control-sm" t-ref="startDate"/>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label fw-bold small">End Date</label>
+                <input type="date" class="form-control form-control-sm" t-ref="endDate"/>
+            </div>
+            <div class="col-md-2">
+                <label class="form-label fw-bold small">Priority</label>
+                <select class="form-select form-select-sm" t-ref="priority">
+                    <option value="">All</option>
+                    <option value="0">Low</option>
+                    <option value="1">Normal</option>
+                    <option value="2">High</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label class="form-label fw-bold small">Status</label>
+                <select class="form-select form-select-sm" t-ref="completed">
+                    <option value="">All</option>
+                    <option value="true">Completed</option>
+                    <option value="false">Not Completed</option>
+                </select>
+            </div>
+            <div class="col-md-2 text-end">
+                <button type="submit" class="btn btn-primary btn-sm w-100">Filter</button>
+            </div>
+        </form>
+        <div class="mt-2 small text-muted" t-esc="filtersText"/>
+    </div>
 
-            <div class="row">
-                <div class="col-md-6 chart-container">
-                    <h4>Tasks by Priority</h4>
-                    <canvas id="tasksBarChart" class="chart-canvas"></canvas>
-                </div>
-                <div class="col-md-6 chart-container">
-                    <h4>Tasks by Completion</h4>
-                    <canvas id="tasksHorizontalBarChart" class="chart-canvas"></canvas>
+    <div class="o_todo_dashboard row row-cols-1 row-cols-md-3 g-3" style="max-height: 85vh; overflow-y: auto;">
+        <t t-foreach="[
+            'tasksBarChart', 'tasksHorizontalBarChart', 'tasksLineChart',
+            'tasksPieChart', 'tasksDoughnutChart', 'tasksPolarAreaChart',
+            'tasksRadarChart', 'tasksScatterChart', 'tasksBubbleChart'
+        ]" t-as="chartId" t-key="chartId">
+            <div class="col">
+                <div class="card shadow-sm">
+                    <div class="card-header text-center fw-bold small"
+                         t-esc="chartId.replace('tasks','').replace('Chart','')"/>
+                    <div class="card-body p-2">
+                        <canvas t-att-id="chartId" class="chart-canvas"></canvas>
+                    </div>
                 </div>
             </div>
+        </t>
+    </div>
 
-            <div class="row">
-                <div class="col-md-6 chart-container">
-                    <h4>Tasks by Priority</h4>
-                    <canvas id="tasksLineChart" class="chart-canvas"></canvas>
-                </div>
-                <div class="col-md-6 chart-container">
-                    <h4>Tasks by Completion</h4>
-                    <canvas id="tasksPieChart" class="chart-canvas"></canvas>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6 chart-container">
-                    <h4>Tasks by Priority</h4>
-                    <canvas id="tasksDoughnutChart" class="chart-canvas"></canvas>
-                </div>
-                <div class="col-md-6 chart-container">
-                    <h4>Tasks by Completion</h4>
-                    <canvas id="tasksPolarAreaChart" class="chart-canvas"></canvas>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6 chart-container">
-                    <h4>Tasks by Priority</h4>
-                    <canvas id="tasksRadarChart" class="chart-canvas"></canvas>
-                </div>
-                <div class="col-md-6 chart-container">
-                    <h4>Tasks by Completion</h4>
-                    <canvas id="tasksScatterChart" class="chart-canvas"></canvas>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6 chart-container">
-                    <h4>Tasks by Priority</h4>
-                    <canvas id="tasksBubbleChart" class="chart-canvas"></canvas>
-                </div>
-            </div>
-        </div>
-    </t>
+</t>
 </templates>

@@ -1,64 +1,57 @@
-.o_web_client,
-.o_action_manager,
-.o_action,
-.o_content {
-  height: 100%;
-}
+.todo-filters {
+    background: #f8f9fa;
+    border-left: 4px solid #007bff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    font-size: 0.875rem;
 
-.o_todo_dashboard .chart-container {
-  padding: 1rem;
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  margin-bottom: 1rem;
-}
+    .form-label {
+        color: #495057;
+    }
 
-.o_todo_dashboard .chart-canvas {
-  width: 100% !important;
-  height: auto !important;
-  max-height: 300px;
-}
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        &:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+    }
 
-
-html,
-body {
-  height: 100%;
-  margin: 0;
-}
-
-main.o_content {
-  flex: 1 1 auto;
-  overflow: hidden;
-
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
+    .text-muted {
+        font-size: 0.75rem;
+        color: #6c757d;
+    }
 }
 
 .o_todo_dashboard {
-  flex: 1 1 auto;
-  overflow-y: auto;
+    .card {
+        border: none;
+        border-radius: 0.5rem;
+        box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
+        transition: transform 0.2s ease;
 
-  scrollbar-width: thin;
-  scrollbar-color: #ccc transparent;
+        &:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+        }
 
-  &::-webkit-scrollbar {
-    width: 6px;
-  }
+        .card-header {
+            background: linear-gradient(90deg, #007bff 0%, #6610f2 100%);
+            color: #fff;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
 
-  &::-webkit-scrollbar-thumb {
-    background-color: #ccc;
-    border-radius: 3px;
-  }
+        .card-body {
+            background: #fff;
+            .chart-canvas {
+                width: 100%;
+                height: 250px;
+            }
+        }
+    }
+}
 
-  &::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  padding: 1rem;
-  font-size: 0.9rem;
-
-  .chart-container {
-    margin-bottom: 2rem;
-  }
+body {
+    background-color: #eef1f5;
 }
