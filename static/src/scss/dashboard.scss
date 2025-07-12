@@ -1,0 +1,64 @@
+.o_web_client,
+.o_action_manager,
+.o_action,
+.o_content {
+  height: 100%;
+}
+
+.o_todo_dashboard .chart-container {
+  padding: 1rem;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.o_todo_dashboard .chart-canvas {
+  width: 100% !important;
+  height: auto !important;
+  max-height: 300px;
+}
+
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+main.o_content {
+  flex: 1 1 auto;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.o_todo_dashboard {
+  flex: 1 1 auto;
+  overflow-y: auto;
+
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  padding: 1rem;
+  font-size: 0.9rem;
+
+  .chart-container {
+    margin-bottom: 2rem;
+  }
+}

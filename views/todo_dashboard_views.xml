@@ -1,0 +1,12 @@
+<odoo>
+    <record id="action_todo_dashboard" model="ir.actions.client">
+        <field name="name">Todo Dashboard</field>
+        <field name="tag">todo_dashboard.dashboard</field>
+    </record>
+
+    <menuitem id="menu_todo_dashboard"
+              name="Todo Dashboard"
+              action="action_todo_dashboard"
+              parent="todo_task.menu_todo_root"
+              sequence="10"/>
+</odoo>
